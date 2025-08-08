@@ -2,10 +2,10 @@ func test(){
     let payload = QueryPayload(query: "SELECT * FROM inv")
     client.send(
       packet: "query",
-      host: "cpanel.andrewblox.com",
-      uname: "andrewbl_app",
-      psswd: "noqvub-gycci3-najnEc",
-      table: "andrewbl_nmall",
+      host: "hostname",
+      uname: "username",
+      psswd: "password",
+      table: "tablename",
       data: payload
     ) { result in
         switch result {
