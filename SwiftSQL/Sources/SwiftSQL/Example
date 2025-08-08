@@ -1,0 +1,36 @@
+func test(){
+    let payload = QueryPayload(query: "SELECT * FROM inv")
+    client.send(
+      packet: "query",
+      host: "cpanel.andrewblox.com",
+      uname: "andrewbl_app",
+      psswd: "noqvub-gycci3-najnEc",
+      table: "andrewbl_nmall",
+      data: payload
+    ) { result in
+        switch result {
+            case .success(let json):
+                // Packet típusa
+                if let packet = json["packet"] as? String {
+                    print("Packet: \(packet)")
+                }
+
+                // Details feldolgozás (mivel ez egy JSON string)
+                if let detailsString = json["details"] as? String,
+                   let detailsData = detailsString.data(using: .utf8),
+                   let detailsArray = try? JSONSerialization.jsonObject(with: detailsData) as? [[String: Any]] {
+
+                    for row in detailsArray {
+                        
+                    }
+
+                } else {
+                    print("Nem sikerült a 'details'-t feldolgozni.")
+                }
+
+            case .failure(let error):
+                print("Hiba: \(error)")
+            }
+        
+    }
+}
