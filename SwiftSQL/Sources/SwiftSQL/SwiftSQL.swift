@@ -74,7 +74,6 @@ public class SwiftSQL{
             }
 
             do {
-                // Ez itt: a TELJES JSON-t visszaadja [String: Any] formában
                 if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any] {
                     completion(.success(json))
                 } else {
